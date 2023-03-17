@@ -2,7 +2,9 @@
     "name": "Track-it-Client",
     "description": "A Node-RED Project",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-contrib-postgresql": "0.12.0"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flow.json",
