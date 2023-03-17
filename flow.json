@@ -1,13 +1,5 @@
 [
     {
-        "id": "4c995de4d53847a2",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "6cb3a540ceac7228",
         "type": "tab",
         "label": "Donnee",
@@ -219,6 +211,23 @@
         "x": 475,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "d1afc6cb74da2fb6",
+        "type": "function",
+        "z": "6cb3a540ceac7228",
+        "name": "Valeur Choque",
+        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\n\nmsg.params = [lat, long, vit];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 340,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "ae53553a08498b18",
