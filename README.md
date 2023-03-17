@@ -6,6 +6,8 @@ Track-it-Client
 Ce repository contient le code source pour l'interface utilisateur qui permet aux utilisateurs finaux d'interagir avec le système Track-It. Cette partie du système est développée en utilisant Node-RED, un outil open-source basé sur Node.js pour la programmation de flux de données.
 
 Installation
+
+
 Assurez-vous que Node-RED est installé sur votre machine locale. Si ce n'est pas le cas, suivez les instructions sur le site officiel de Node-RED.
 Clonez ce repository sur votre machine locale.
 Lancez Node-RED en exécutant la commande node-red dans votre terminal.
