@@ -1,0 +1,10 @@
+.navbar 
+{
+    box-shadow: 0 4px 6px rgba(255, 0, 0, 0.4);
+}
+  
+.fa-motor:before {
+    content: "\f21c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}

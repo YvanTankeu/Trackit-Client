@@ -8,9 +8,33 @@
         "env": []
     },
     {
+        "id": "2ba9e38eee59fb38",
+        "type": "tab",
+        "label": "Donnee",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "dbcc2d7c85046e7c",
         "type": "tab",
         "label": "Postgres",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f6aa508a0d705dba",
+        "type": "tab",
+        "label": "Track",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "af3e3d78f2bdec1c",
+        "type": "tab",
+        "label": "Carte gps",
         "disabled": false,
         "info": "",
         "env": []
@@ -43,39 +67,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "03e2311d14de906d",
-        "type": "postgresdb",
-        "hostname": "192.168.2.50",
-        "port": "5432",
-        "db": "tracki_db",
-        "ssl": false
-    },
-    {
-        "id": "8b05c90521f20cd3",
-        "type": "postgreSQLConfig",
-        "name": "iot",
-        "host": "192.168.2.30",
-        "hostFieldType": "str",
-        "port": "5432",
-        "portFieldType": "num",
-        "database": "Humid",
-        "databaseFieldType": "str",
-        "ssl": "false",
-        "sslFieldType": "bool",
-        "applicationName": "",
-        "applicationNameType": "str",
-        "max": "10",
-        "maxFieldType": "num",
-        "idle": "1000",
-        "idleFieldType": "num",
-        "connectionTimeout": "10000",
-        "connectionTimeoutFieldType": "num",
-        "user": "postgres",
-        "userFieldType": "str",
-        "password": "admin",
-        "passwordFieldType": "str"
-    },
-    {
         "id": "63c1138ed0bc8265",
         "type": "postgreSQLConfig",
         "name": "Track-it Serveur database",
@@ -101,6 +92,180 @@
         "passwordFieldType": "str"
     },
     {
+        "id": "f6dcf7cfb2b35a64",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9b775194c151a034",
+        "type": "ui_tab",
+        "name": "Track-It-menu",
+        "icon": "mi-videogame_asset",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9a19f550a37bd2b3",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "orange",
+                "palette": "dark"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "true",
+            "allowSwipe": "true",
+            "lockMenu": "false",
+            "allowTempTheme": "false",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "fb3bb654c74c616b",
+        "type": "ui_group",
+        "name": "Menu",
+        "tab": "9b775194c151a034",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5a049cfb0e40a566",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "7c45152704667ffe",
+        "type": "ui_group",
+        "name": "defaut",
+        "tab": "5a049cfb0e40a566",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d1c2adefa9ee1b25",
+        "type": "ui_group",
+        "name": "Gauge",
+        "tab": "9b775194c151a034",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "5e5be55f16f44a4a",
         "type": "mqtt in",
         "z": "6cb3a540ceac7228",
@@ -118,7 +283,9 @@
         "wires": [
             [
                 "c9db5428431c0397",
-                "1146db538c036ea0"
+                "1146db538c036ea0",
+                "f2d4a8c824247432",
+                "e7bd96984194f3e0"
             ]
         ]
     },
@@ -173,8 +340,8 @@
         "y": 200,
         "wires": [
             [
-                "479eba15abb26de8",
-                "1c9e1dc0a1ace29e"
+                "1c9e1dc0a1ace29e",
+                "479eba15abb26de8"
             ]
         ]
     },
@@ -205,20 +372,325 @@
         "wires": []
     },
     {
-        "id": "d1afc6cb74da2fb6",
+        "id": "f2d4a8c824247432",
         "type": "function",
         "z": "6cb3a540ceac7228",
-        "name": "Valeur Choque",
+        "name": "Valeur choc",
+        "func": "let valChoc = msg.payload.values.Choc;\nmsg.params = [valChoc];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "70ab83a9aab1943f"
+            ]
+        ]
+    },
+    {
+        "id": "70ab83a9aab1943f",
+        "type": "link out",
+        "z": "6cb3a540ceac7228",
+        "name": "Lien vers la sauvegarde de valeur de choc",
+        "mode": "link",
+        "links": [
+            "282b08adf2f594cf"
+        ],
+        "x": 485,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "697a5ec531611210",
+        "type": "worldmap",
+        "z": "6cb3a540ceac7228",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "14",
+        "layer": "OSMC",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,AC,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 780,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "753de80ddb095dd7",
+        "type": "worldmap-tracks",
+        "z": "6cb3a540ceac7228",
+        "name": "",
+        "depth": 20,
+        "layer": "separate",
+        "smooth": false,
+        "x": 610,
+        "y": 240,
+        "wires": [
+            [
+                "697a5ec531611210"
+            ]
+        ]
+    },
+    {
+        "id": "e7bd96984194f3e0",
+        "type": "function",
+        "z": "6cb3a540ceac7228",
+        "name": "Route Analytics",
+        "func": "return {\n    payload: {\n        name: \"Bus\",\n        lat: msg.payload.values.Latitude,\n        lon: msg.payload.values.Longitude,\n        vitesse: parseFloat(msg.payload.values.Vitesse).toFixed(2) + \" kmph\",\n        icon: 'car'\n    }\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "697a5ec531611210",
+                "753de80ddb095dd7"
+            ]
+        ]
+    },
+    {
+        "id": "76b835ae27ecfb91",
+        "type": "mqtt in",
+        "z": "2ba9e38eee59fb38",
+        "name": "TrackIt_input",
+        "topic": "trackIt/data",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "f6dcf7cfb2b35a64",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 360,
+        "wires": [
+            [
+                "50d0b31813d207bd",
+                "7e7f84375dcf0ad9",
+                "67ed80a24073a177",
+                "b83cecab80c37de1",
+                "8930f0b1ef012d64"
+            ]
+        ]
+    },
+    {
+        "id": "b83cecab80c37de1",
+        "type": "function",
+        "z": "2ba9e38eee59fb38",
+        "name": "Valeur GPS",
         "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\n\nmsg.params = [lat, long, vit];\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 340,
+        "x": 330,
+        "y": 260,
         "wires": [
-            []
+            [
+                "2c0ac6b0aca863ef"
+            ]
+        ]
+    },
+    {
+        "id": "50d0b31813d207bd",
+        "type": "function",
+        "z": "2ba9e38eee59fb38",
+        "name": "Valeur moteur",
+        "func": "let valMoteur = msg.payload.values.Moteur;\n\nlet isMoteurActive = false;\n\nif (valMoteur > 0) {\n    isMoteurActive = true;\n}\n\nmsg.params = [valMoteur];\n\n//msg.params = [valMoteur];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "6fa3bb6013653280"
+            ]
+        ]
+    },
+    {
+        "id": "2c0ac6b0aca863ef",
+        "type": "link out",
+        "z": "2ba9e38eee59fb38",
+        "name": "Lien vers la sauvegarde des valeurs GPS",
+        "mode": "link",
+        "links": [
+            "96285613aaa558f6"
+        ],
+        "x": 485,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "6fa3bb6013653280",
+        "type": "link out",
+        "z": "2ba9e38eee59fb38",
+        "name": "Lien vers la sauvegarde de la valeur du moteur",
+        "mode": "link",
+        "links": [
+            "52db2040a36c8cad"
+        ],
+        "x": 475,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "7e7f84375dcf0ad9",
+        "type": "function",
+        "z": "2ba9e38eee59fb38",
+        "name": "Valeur choc",
+        "func": "let valChoc = msg.payload.values.Choc;\nmsg.params = [valChoc];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "eb8ebe64d0a3eec5"
+            ]
+        ]
+    },
+    {
+        "id": "eb8ebe64d0a3eec5",
+        "type": "link out",
+        "z": "2ba9e38eee59fb38",
+        "name": "Lien vers la sauvegarde de valeur de choc",
+        "mode": "link",
+        "links": [
+            "088853a0b3fd3a78"
+        ],
+        "x": 485,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "22394da1a0ad336c",
+        "type": "worldmap-tracks",
+        "z": "2ba9e38eee59fb38",
+        "name": "",
+        "depth": 20,
+        "layer": "separate",
+        "smooth": false,
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [
+                "c67014079d09a1c3"
+            ]
+        ]
+    },
+    {
+        "id": "c67014079d09a1c3",
+        "type": "worldmap",
+        "z": "2ba9e38eee59fb38",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "14",
+        "layer": "OSMC",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,AC,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 820,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "92c6154f2f89dc2f",
+        "type": "debug",
+        "z": "2ba9e38eee59fb38",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "67ed80a24073a177",
+        "type": "debug",
+        "z": "2ba9e38eee59fb38",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "8930f0b1ef012d64",
+        "type": "function",
+        "z": "2ba9e38eee59fb38",
+        "name": "Route Analytics",
+        "func": "return {\n    payload: {\n        name: \"Bus\",\n        lat: msg.payload.values.Latitude,\n        lon: msg.payload.values.Longitude,\n        vitesse: parseFloat(msg.payload.values.Vitesse).toFixed(2) + \" kmph\",\n        icon: 'car'\n    }\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "c67014079d09a1c3",
+                "22394da1a0ad336c",
+                "92c6154f2f89dc2f"
+            ]
         ]
     },
     {
@@ -233,7 +705,7 @@
         "y": 300,
         "wires": [
             [
-                "643130bede6f2069"
+                "e8fccd56da71e53f"
             ]
         ]
     },
@@ -266,44 +738,373 @@
         "y": 200,
         "wires": [
             [
-                "88d8087a4709b3b5"
+                "4d9457f5314238ed"
             ]
         ]
     },
     {
-        "id": "643130bede6f2069",
+        "id": "4d9457f5314238ed",
         "type": "postgresql",
         "z": "dbcc2d7c85046e7c",
-        "name": "PostgreSql DB",
-        "query": "INSERT INTO public.\"trackItApp_capteurgps\"  VALUES (DEFAULT, $1, $2, $3);",
-        "postgreSQLConfig": "63c1138ed0bc8265",
-        "split": false,
-        "rowsPerMsg": 1,
-        "outputs": 1,
-        "x": 520,
-        "y": 300,
-        "wires": [
-            [
-                "ac7ca9bd648046cb"
-            ]
-        ]
-    },
-    {
-        "id": "88d8087a4709b3b5",
-        "type": "postgresql",
-        "z": "dbcc2d7c85046e7c",
-        "name": "PostgreSql DB",
+        "name": "PostgreSQL",
         "query": "INSERT INTO public.\"trackItApp_moteur\" VALUES (DEFAULT, $1);",
         "postgreSQLConfig": "63c1138ed0bc8265",
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 520,
-        "y": 200,
+        "x": 510,
+        "y": 140,
         "wires": [
             [
                 "ac7ca9bd648046cb"
             ]
         ]
+    },
+    {
+        "id": "e8fccd56da71e53f",
+        "type": "postgresql",
+        "z": "dbcc2d7c85046e7c",
+        "name": "PostgreSQL db",
+        "query": "INSERT INTO public.\"trackItApp_capteurgps\"  VALUES (DEFAULT, $1, $2, $3);",
+        "postgreSQLConfig": "63c1138ed0bc8265",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 500,
+        "y": 240,
+        "wires": [
+            [
+                "ac7ca9bd648046cb"
+            ]
+        ]
+    },
+    {
+        "id": "282b08adf2f594cf",
+        "type": "link in",
+        "z": "dbcc2d7c85046e7c",
+        "name": "Lien sortie sauvegarde valeur du Capteur de choc",
+        "links": [
+            "70ab83a9aab1943f"
+        ],
+        "x": 345,
+        "y": 380,
+        "wires": [
+            [
+                "b65c39ada4a68e11"
+            ]
+        ]
+    },
+    {
+        "id": "b65c39ada4a68e11",
+        "type": "postgresql",
+        "z": "dbcc2d7c85046e7c",
+        "name": "PostgreSQL db",
+        "query": "INSERT INTO public.\"trackItApp_capteurdechoc\" VALUES (DEFAULT, 1, $1);",
+        "postgreSQLConfig": "63c1138ed0bc8265",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "ac7ca9bd648046cb"
+            ]
+        ]
+    },
+    {
+        "id": "9a5d7e8d6da4f28f",
+        "type": "debug",
+        "z": "f6aa508a0d705dba",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2bb7a2e9b61f54ce",
+        "type": "inject",
+        "z": "f6aa508a0d705dba",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Jason\",\"lat\":-65.05,\"lon\":47.35}",
+        "payloadType": "json",
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "3319f696e8deb58b",
+                "9a5d7e8d6da4f28f"
+            ]
+        ]
+    },
+    {
+        "id": "3319f696e8deb58b",
+        "type": "worldmap",
+        "z": "f6aa508a0d705dba",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "13",
+        "layer": "Custom",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,RW,SN,AC,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 460,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7511705f37c513ec",
+        "type": "ui_template",
+        "z": "af3e3d78f2bdec1c",
+        "group": "fb3bb654c74c616b",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload | trusted\"></div>\n<div style=\"position:relative;height:100%;width:100%\">\n    <iframe src=\"/worldmap\"\n        style=\"border:none;position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;\"></iframe>\n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 440,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ad85fe6747773a31",
+        "type": "uibuilder",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "topic": "",
+        "url": "builder",
+        "fwdInMessages": false,
+        "allowScripts": false,
+        "allowStyles": false,
+        "copyIndex": true,
+        "templateFolder": "blank",
+        "extTemplate": "",
+        "showfolder": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "deployedVersion": "6.3.0",
+        "showMsgUib": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "0f8a8f61c5843245",
+        "type": "ui_gauge",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "group": "7c45152704667ffe",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Vitesse du bus",
+        "label": "KMPH",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "280",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "90",
+        "seg2": "99",
+        "diff": false,
+        "className": "",
+        "x": 460,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8bb1a20438df6e71",
+        "type": "inject",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "100",
+        "payloadType": "num",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "0f8a8f61c5843245"
+            ]
+        ]
+    },
+    {
+        "id": "7233116ce7979f9c",
+        "type": "ui_template",
+        "z": "af3e3d78f2bdec1c",
+        "group": "7c45152704667ffe",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "0f8a8f61c5843245"
+            ]
+        ]
+    },
+    {
+        "id": "c5cc864cb7041d80",
+        "type": "ui_led",
+        "z": "af3e3d78f2bdec1c",
+        "order": 1,
+        "group": "7c45152704667ffe",
+        "width": 0,
+        "height": 0,
+        "label": "LED",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#0080ff",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 350,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "70bf5418b862a7f9",
+        "type": "ui_switch",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "fb3bb654c74c616b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 90,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8396316c80493280",
+        "type": "ui_gauge",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 230,
+        "y": 80,
+        "wires": []
     }
 ]
