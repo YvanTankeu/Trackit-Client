@@ -1,16 +1,16 @@
 [
     {
-        "id": "6cb3a540ceac7228",
+        "id": "2ba9e38eee59fb38",
         "type": "tab",
-        "label": "Donnee",
+        "label": "Data",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "2ba9e38eee59fb38",
+        "id": "bd8194806705e301",
         "type": "tab",
-        "label": "Donnee",
+        "label": "Analayse et traitement des data",
         "disabled": false,
         "info": "",
         "env": []
@@ -18,15 +18,7 @@
     {
         "id": "dbcc2d7c85046e7c",
         "type": "tab",
-        "label": "Postgres",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "f6aa508a0d705dba",
-        "type": "tab",
-        "label": "Track",
+        "label": "db",
         "disabled": false,
         "info": "",
         "env": []
@@ -34,7 +26,15 @@
     {
         "id": "af3e3d78f2bdec1c",
         "type": "tab",
-        "label": "Carte gps",
+        "label": "Interface Graphique",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "82bd2cd878b416b1",
+        "type": "tab",
+        "label": "widgets",
         "disabled": false,
         "info": "",
         "env": []
@@ -266,212 +266,6 @@
         "className": ""
     },
     {
-        "id": "5e5be55f16f44a4a",
-        "type": "mqtt in",
-        "z": "6cb3a540ceac7228",
-        "name": "TrackIt_input",
-        "topic": "trackIt/data",
-        "qos": "0",
-        "datatype": "auto-detect",
-        "broker": "2937d5c524212b8d",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 90,
-        "y": 360,
-        "wires": [
-            [
-                "c9db5428431c0397",
-                "1146db538c036ea0",
-                "f2d4a8c824247432",
-                "e7bd96984194f3e0"
-            ]
-        ]
-    },
-    {
-        "id": "1c9e1dc0a1ace29e",
-        "type": "debug",
-        "z": "6cb3a540ceac7228",
-        "name": "debug 5",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "c9db5428431c0397",
-        "type": "function",
-        "z": "6cb3a540ceac7228",
-        "name": "Valeur GPS",
-        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\n\nmsg.params = [lat, long, vit];\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 330,
-        "y": 260,
-        "wires": [
-            [
-                "138ef3d017868702"
-            ]
-        ]
-    },
-    {
-        "id": "1146db538c036ea0",
-        "type": "function",
-        "z": "6cb3a540ceac7228",
-        "name": "Valeur moteur",
-        "func": "let valMoteur = msg.payload.values.Moteur;\n\nlet isMoteurActive = false;\n\nif (valMoteur > 0) {\n    isMoteurActive = true;\n}\n\nmsg.params = [valMoteur];\n\n//msg.params = [valMoteur];\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
-        "y": 200,
-        "wires": [
-            [
-                "1c9e1dc0a1ace29e",
-                "479eba15abb26de8"
-            ]
-        ]
-    },
-    {
-        "id": "138ef3d017868702",
-        "type": "link out",
-        "z": "6cb3a540ceac7228",
-        "name": "Lien vers la sauvegarde des valeurs GPS",
-        "mode": "link",
-        "links": [
-            "ae53553a08498b18"
-        ],
-        "x": 485,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "479eba15abb26de8",
-        "type": "link out",
-        "z": "6cb3a540ceac7228",
-        "name": "Lien vers la sauvegarde de la valeur du moteur",
-        "mode": "link",
-        "links": [
-            "f08c8eea2af2189f"
-        ],
-        "x": 475,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "f2d4a8c824247432",
-        "type": "function",
-        "z": "6cb3a540ceac7228",
-        "name": "Valeur choc",
-        "func": "let valChoc = msg.payload.values.Choc;\nmsg.params = [valChoc];\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 330,
-        "y": 360,
-        "wires": [
-            [
-                "70ab83a9aab1943f"
-            ]
-        ]
-    },
-    {
-        "id": "70ab83a9aab1943f",
-        "type": "link out",
-        "z": "6cb3a540ceac7228",
-        "name": "Lien vers la sauvegarde de valeur de choc",
-        "mode": "link",
-        "links": [
-            "282b08adf2f594cf"
-        ],
-        "x": 485,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "697a5ec531611210",
-        "type": "worldmap",
-        "z": "6cb3a540ceac7228",
-        "name": "",
-        "lat": "",
-        "lon": "",
-        "zoom": "14",
-        "layer": "OSMC",
-        "cluster": "",
-        "maxage": "",
-        "usermenu": "show",
-        "layers": "show",
-        "panit": "false",
-        "panlock": "false",
-        "zoomlock": "false",
-        "hiderightclick": "false",
-        "coords": "none",
-        "showgrid": "false",
-        "showruler": "false",
-        "allowFileDrop": "false",
-        "path": "/worldmap",
-        "overlist": "DR,CO,RA,DN,BU,AC,TL,HM",
-        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
-        "mapname": "",
-        "mapurl": "",
-        "mapopt": "",
-        "mapwms": false,
-        "x": 780,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "753de80ddb095dd7",
-        "type": "worldmap-tracks",
-        "z": "6cb3a540ceac7228",
-        "name": "",
-        "depth": 20,
-        "layer": "separate",
-        "smooth": false,
-        "x": 610,
-        "y": 240,
-        "wires": [
-            [
-                "697a5ec531611210"
-            ]
-        ]
-    },
-    {
-        "id": "e7bd96984194f3e0",
-        "type": "function",
-        "z": "6cb3a540ceac7228",
-        "name": "Route Analytics",
-        "func": "return {\n    payload: {\n        name: \"Bus\",\n        lat: msg.payload.values.Latitude,\n        lon: msg.payload.values.Longitude,\n        vitesse: parseFloat(msg.payload.values.Vitesse).toFixed(2) + \" kmph\",\n        icon: 'car'\n    }\n};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 400,
-        "y": 320,
-        "wires": [
-            [
-                "697a5ec531611210",
-                "753de80ddb095dd7"
-            ]
-        ]
-    },
-    {
         "id": "76b835ae27ecfb91",
         "type": "mqtt in",
         "z": "2ba9e38eee59fb38",
@@ -491,8 +285,7 @@
                 "50d0b31813d207bd",
                 "7e7f84375dcf0ad9",
                 "67ed80a24073a177",
-                "b83cecab80c37de1",
-                "8930f0b1ef012d64"
+                "b83cecab80c37de1"
             ]
         ]
     },
@@ -501,14 +294,14 @@
         "type": "function",
         "z": "2ba9e38eee59fb38",
         "name": "Valeur GPS",
-        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\n\nmsg.params = [lat, long, vit];\n\nreturn msg;\n",
+        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\n\nreturn {\n    payload: {\n        name: \"Bus\",\n        lat: lat,\n        lon: long,\n        vitesse: parseFloat(vit).toFixed(2) + \" kmph\",\n        icon: 'car'\n    },\n    params: [lat, long, vit]\n};\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 260,
+        "y": 160,
         "wires": [
             [
                 "2c0ac6b0aca863ef"
@@ -526,8 +319,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 200,
+        "x": 330,
+        "y": 80,
         "wires": [
             [
                 "6fa3bb6013653280"
@@ -541,10 +334,13 @@
         "name": "Lien vers la sauvegarde des valeurs GPS",
         "mode": "link",
         "links": [
-            "96285613aaa558f6"
+            "96285613aaa558f6",
+            "5bc73122eb101bac",
+            "a0983e787ae78c20",
+            "ae53553a08498b18"
         ],
         "x": 485,
-        "y": 260,
+        "y": 160,
         "wires": []
     },
     {
@@ -554,10 +350,11 @@
         "name": "Lien vers la sauvegarde de la valeur du moteur",
         "mode": "link",
         "links": [
-            "52db2040a36c8cad"
+            "52db2040a36c8cad",
+            "f08c8eea2af2189f"
         ],
-        "x": 475,
-        "y": 200,
+        "x": 485,
+        "y": 80,
         "wires": []
     },
     {
@@ -572,7 +369,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 360,
+        "y": 240,
         "wires": [
             [
                 "eb8ebe64d0a3eec5"
@@ -586,32 +383,49 @@
         "name": "Lien vers la sauvegarde de valeur de choc",
         "mode": "link",
         "links": [
-            "088853a0b3fd3a78"
+            "088853a0b3fd3a78",
+            "282b08adf2f594cf"
         ],
         "x": 485,
-        "y": 360,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "22394da1a0ad336c",
-        "type": "worldmap-tracks",
+        "id": "67ed80a24073a177",
+        "type": "debug",
         "z": "2ba9e38eee59fb38",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "237e78b6ced70a46",
+        "type": "worldmap-tracks",
+        "z": "bd8194806705e301",
         "name": "",
         "depth": 20,
         "layer": "separate",
         "smooth": false,
-        "x": 650,
-        "y": 240,
+        "x": 570,
+        "y": 200,
         "wires": [
             [
-                "c67014079d09a1c3"
+                "9826209b6b3d346b"
             ]
         ]
     },
     {
-        "id": "c67014079d09a1c3",
+        "id": "9826209b6b3d346b",
         "type": "worldmap",
-        "z": "2ba9e38eee59fb38",
+        "z": "bd8194806705e301",
         "name": "",
         "lat": "",
         "lon": "",
@@ -636,31 +450,43 @@
         "mapurl": "",
         "mapopt": "",
         "mapwms": false,
-        "x": 820,
-        "y": 320,
+        "x": 800,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "92c6154f2f89dc2f",
-        "type": "debug",
-        "z": "2ba9e38eee59fb38",
-        "name": "debug 8",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 380,
+        "id": "3d435e31e7df8ba6",
+        "type": "comment",
+        "z": "bd8194806705e301",
+        "name": "Analyse des donnees et affiche sur la map en mode tracking",
+        "info": "",
+        "x": 480,
+        "y": 160,
         "wires": []
     },
     {
-        "id": "67ed80a24073a177",
+        "id": "5bc73122eb101bac",
+        "type": "link in",
+        "z": "bd8194806705e301",
+        "name": "Lien sortie sauvegarde valeur du GPS analyse",
+        "links": [
+            "2c0ac6b0aca863ef"
+        ],
+        "x": 325,
+        "y": 260,
+        "wires": [
+            [
+                "237e78b6ced70a46",
+                "9826209b6b3d346b",
+                "2bf8883bd0a7e685"
+            ]
+        ]
+    },
+    {
+        "id": "2bf8883bd0a7e685",
         "type": "debug",
-        "z": "2ba9e38eee59fb38",
-        "name": "debug 9",
+        "z": "bd8194806705e301",
+        "name": "debug 10",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -668,30 +494,9 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 220,
-        "y": 460,
+        "x": 540,
+        "y": 400,
         "wires": []
-    },
-    {
-        "id": "8930f0b1ef012d64",
-        "type": "function",
-        "z": "2ba9e38eee59fb38",
-        "name": "Route Analytics",
-        "func": "return {\n    payload: {\n        name: \"Bus\",\n        lat: msg.payload.values.Latitude,\n        lon: msg.payload.values.Longitude,\n        vitesse: parseFloat(msg.payload.values.Vitesse).toFixed(2) + \" kmph\",\n        icon: 'car'\n    }\n};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 320,
-        "wires": [
-            [
-                "c67014079d09a1c3",
-                "22394da1a0ad336c",
-                "92c6154f2f89dc2f"
-            ]
-        ]
     },
     {
         "id": "ae53553a08498b18",
@@ -699,10 +504,10 @@
         "z": "dbcc2d7c85046e7c",
         "name": "Lien sortie sauvegarde valeur du GPS",
         "links": [
-            "138ef3d017868702"
+            "2c0ac6b0aca863ef"
         ],
-        "x": 345,
-        "y": 300,
+        "x": 95,
+        "y": 320,
         "wires": [
             [
                 "e8fccd56da71e53f"
@@ -714,7 +519,7 @@
         "type": "debug",
         "z": "dbcc2d7c85046e7c",
         "name": "debug after db",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -722,8 +527,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 240,
+        "x": 580,
+        "y": 260,
         "wires": []
     },
     {
@@ -732,10 +537,10 @@
         "z": "dbcc2d7c85046e7c",
         "name": "Lien sortie sauvegarde valeur du moteur",
         "links": [
-            "479eba15abb26de8"
+            "6fa3bb6013653280"
         ],
-        "x": 345,
-        "y": 200,
+        "x": 95,
+        "y": 220,
         "wires": [
             [
                 "4d9457f5314238ed"
@@ -746,14 +551,14 @@
         "id": "4d9457f5314238ed",
         "type": "postgresql",
         "z": "dbcc2d7c85046e7c",
-        "name": "PostgreSQL",
+        "name": " sauvegarde valeur du moteur",
         "query": "INSERT INTO public.\"trackItApp_moteur\" VALUES (DEFAULT, $1);",
         "postgreSQLConfig": "63c1138ed0bc8265",
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 510,
-        "y": 140,
+        "x": 310,
+        "y": 160,
         "wires": [
             [
                 "ac7ca9bd648046cb"
@@ -764,14 +569,14 @@
         "id": "e8fccd56da71e53f",
         "type": "postgresql",
         "z": "dbcc2d7c85046e7c",
-        "name": "PostgreSQL db",
+        "name": "sauvegarde valeur du GPS",
         "query": "INSERT INTO public.\"trackItApp_capteurgps\"  VALUES (DEFAULT, $1, $2, $3);",
         "postgreSQLConfig": "63c1138ed0bc8265",
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 500,
-        "y": 240,
+        "x": 290,
+        "y": 260,
         "wires": [
             [
                 "ac7ca9bd648046cb"
@@ -784,10 +589,10 @@
         "z": "dbcc2d7c85046e7c",
         "name": "Lien sortie sauvegarde valeur du Capteur de choc",
         "links": [
-            "70ab83a9aab1943f"
+            "eb8ebe64d0a3eec5"
         ],
-        "x": 345,
-        "y": 380,
+        "x": 95,
+        "y": 400,
         "wires": [
             [
                 "b65c39ada4a68e11"
@@ -798,14 +603,14 @@
         "id": "b65c39ada4a68e11",
         "type": "postgresql",
         "z": "dbcc2d7c85046e7c",
-        "name": "PostgreSQL db",
+        "name": " sauvegarde valeur du Capteur de choc",
         "query": "INSERT INTO public.\"trackItApp_capteurdechoc\" VALUES (DEFAULT, 1, $1);",
         "postgreSQLConfig": "63c1138ed0bc8265",
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 500,
-        "y": 380,
+        "x": 320,
+        "y": 400,
         "wires": [
             [
                 "ac7ca9bd648046cb"
@@ -813,103 +618,47 @@
         ]
     },
     {
-        "id": "9a5d7e8d6da4f28f",
-        "type": "debug",
-        "z": "f6aa508a0d705dba",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 460,
-        "y": 360,
+        "id": "8fed4e702d8f3816",
+        "type": "comment",
+        "z": "dbcc2d7c85046e7c",
+        "name": "Suavegarde des données entrant dans la bd postgresql",
+        "info": "",
+        "x": 280,
+        "y": 100,
         "wires": []
     },
     {
-        "id": "2bb7a2e9b61f54ce",
-        "type": "inject",
-        "z": "f6aa508a0d705dba",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
+        "id": "a0983e787ae78c20",
+        "type": "link in",
+        "z": "dbcc2d7c85046e7c",
+        "name": "link in 2",
+        "links": [
+            "2c0ac6b0aca863ef"
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"name\":\"Jason\",\"lat\":-65.05,\"lon\":47.35}",
-        "payloadType": "json",
-        "x": 270,
-        "y": 280,
+        "x": 215,
+        "y": 520,
         "wires": [
             [
-                "3319f696e8deb58b",
-                "9a5d7e8d6da4f28f"
+                "37999ef150c79294"
             ]
         ]
     },
     {
-        "id": "3319f696e8deb58b",
-        "type": "worldmap",
-        "z": "f6aa508a0d705dba",
-        "name": "",
-        "lat": "",
-        "lon": "",
-        "zoom": "13",
-        "layer": "Custom",
-        "cluster": "",
-        "maxage": "",
-        "usermenu": "show",
-        "layers": "show",
-        "panit": "false",
-        "panlock": "false",
-        "zoomlock": "false",
-        "hiderightclick": "false",
-        "coords": "none",
-        "showgrid": "false",
-        "showruler": "false",
-        "allowFileDrop": "false",
-        "path": "/worldmap",
-        "overlist": "DR,CO,RA,DN,BU,RW,SN,AC,TL,HM",
-        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
-        "mapname": "",
-        "mapurl": "",
-        "mapopt": "",
-        "mapwms": false,
-        "x": 460,
-        "y": 220,
+        "id": "37999ef150c79294",
+        "type": "debug",
+        "z": "dbcc2d7c85046e7c",
+        "name": "link in 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 520,
         "wires": []
-    },
-    {
-        "id": "7511705f37c513ec",
-        "type": "ui_template",
-        "z": "af3e3d78f2bdec1c",
-        "group": "fb3bb654c74c616b",
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "format": "<div ng-bind-html=\"msg.payload | trusted\"></div>\n<div style=\"position:relative;height:100%;width:100%\">\n    <iframe src=\"/worldmap\"\n        style=\"border:none;position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;\"></iframe>\n</div>\n\n",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 440,
-        "y": 140,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "ad85fe6747773a31",
@@ -929,93 +678,27 @@
         "sourceFolder": "src",
         "deployedVersion": "6.3.0",
         "showMsgUib": false,
-        "x": 540,
-        "y": 240,
+        "x": 340,
+        "y": 260,
         "wires": [
             [],
             []
         ]
     },
     {
-        "id": "0f8a8f61c5843245",
-        "type": "ui_gauge",
+        "id": "fd18ade848dabd01",
+        "type": "comment",
         "z": "af3e3d78f2bdec1c",
-        "name": "",
-        "group": "7c45152704667ffe",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Vitesse du bus",
-        "label": "KMPH",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "280",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "90",
-        "seg2": "99",
-        "diff": false,
-        "className": "",
-        "x": 460,
-        "y": 340,
+        "name": "Site web developpe par uiBuilder",
+        "info": "",
+        "x": 410,
+        "y": 200,
         "wires": []
-    },
-    {
-        "id": "8bb1a20438df6e71",
-        "type": "inject",
-        "z": "af3e3d78f2bdec1c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "100",
-        "payloadType": "num",
-        "x": 110,
-        "y": 340,
-        "wires": [
-            [
-                "0f8a8f61c5843245"
-            ]
-        ]
-    },
-    {
-        "id": "7233116ce7979f9c",
-        "type": "ui_template",
-        "z": "af3e3d78f2bdec1c",
-        "group": "7c45152704667ffe",
-        "name": "",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "format": "",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 300,
-        "y": 420,
-        "wires": [
-            [
-                "0f8a8f61c5843245"
-            ]
-        ]
     },
     {
         "id": "c5cc864cb7041d80",
         "type": "ui_led",
-        "z": "af3e3d78f2bdec1c",
+        "z": "82bd2cd878b416b1",
         "order": 1,
         "group": "7c45152704667ffe",
         "width": 0,
@@ -1044,66 +727,55 @@
         "shape": "circle",
         "showGlow": true,
         "name": "",
-        "x": 350,
-        "y": 240,
+        "x": 170,
+        "y": 120,
         "wires": []
     },
     {
-        "id": "70bf5418b862a7f9",
-        "type": "ui_switch",
-        "z": "af3e3d78f2bdec1c",
+        "id": "0f8a8f61c5843245",
+        "type": "ui_gauge",
+        "z": "82bd2cd878b416b1",
         "name": "",
-        "label": "switch",
-        "tooltip": "",
-        "group": "fb3bb654c74c616b",
+        "group": "7c45152704667ffe",
         "order": 1,
         "width": 0,
         "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 90,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8396316c80493280",
-        "type": "ui_gauge",
-        "z": "af3e3d78f2bdec1c",
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
         "gtype": "gage",
-        "title": "gauge",
-        "label": "units",
+        "title": "Vitesse du bus",
+        "label": "KMPH",
         "format": "{{value}}",
         "min": 0,
-        "max": 10,
+        "max": "280",
         "colors": [
-            "#00B500",
-            "#E6E600",
-            "#CA3838"
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
         ],
-        "seg1": "",
-        "seg2": "",
+        "seg1": "90",
+        "seg2": "99",
         "diff": false,
         "className": "",
-        "x": 230,
+        "x": 180,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "be2b162e212c8368",
+        "type": "comment",
+        "z": "82bd2cd878b416b1",
+        "name": "Gauge de vitesse du bus",
+        "info": "",
+        "x": 190,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c39c234c4dc42b7a",
+        "type": "comment",
+        "z": "82bd2cd878b416b1",
+        "name": "Etat des leds du bus",
+        "info": "",
+        "x": 170,
         "y": 80,
         "wires": []
     }
