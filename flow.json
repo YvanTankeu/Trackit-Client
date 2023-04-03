@@ -8,17 +8,17 @@
         "env": []
     },
     {
-        "id": "bd8194806705e301",
+        "id": "dbcc2d7c85046e7c",
         "type": "tab",
-        "label": "Analayse et traitement des data",
+        "label": "db",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "dbcc2d7c85046e7c",
+        "id": "bd8194806705e301",
         "type": "tab",
-        "label": "db",
+        "label": "Analayse et traitement des data",
         "disabled": false,
         "info": "",
         "env": []
@@ -35,6 +35,22 @@
         "id": "82bd2cd878b416b1",
         "type": "tab",
         "label": "widgets",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c1c74aa1848cc6c6",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f52fbd15b6b1b4b4",
+        "type": "tab",
+        "label": "Flow 5",
         "disabled": false,
         "info": "",
         "env": []
@@ -285,7 +301,9 @@
                 "50d0b31813d207bd",
                 "7e7f84375dcf0ad9",
                 "67ed80a24073a177",
-                "b83cecab80c37de1"
+                "b83cecab80c37de1",
+                "459c789425a86b3f",
+                "487d00c119f4238f"
             ]
         ]
     },
@@ -336,7 +354,6 @@
         "links": [
             "96285613aaa558f6",
             "5bc73122eb101bac",
-            "a0983e787ae78c20",
             "ae53553a08498b18"
         ],
         "x": 485,
@@ -407,96 +424,120 @@
         "wires": []
     },
     {
-        "id": "237e78b6ced70a46",
-        "type": "worldmap-tracks",
-        "z": "bd8194806705e301",
-        "name": "",
-        "depth": 20,
-        "layer": "separate",
-        "smooth": false,
-        "x": 570,
-        "y": 200,
+        "id": "459c789425a86b3f",
+        "type": "function",
+        "z": "2ba9e38eee59fb38",
+        "name": "Valeur connexion",
+        "func": "let etatWifi = msg.payload.values.WiFi;\nlet etatBroker = msg.payload.values.Broker;\n\nmsg.params = [etatWifi, etatBroker];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 320,
         "wires": [
             [
-                "9826209b6b3d346b"
+                "5c6452bb6d6e4700"
             ]
         ]
     },
     {
-        "id": "9826209b6b3d346b",
-        "type": "worldmap",
-        "z": "bd8194806705e301",
-        "name": "",
-        "lat": "",
-        "lon": "",
-        "zoom": "14",
-        "layer": "OSMC",
-        "cluster": "",
-        "maxage": "",
-        "usermenu": "show",
-        "layers": "show",
-        "panit": "false",
-        "panlock": "false",
-        "zoomlock": "false",
-        "hiderightclick": "false",
-        "coords": "none",
-        "showgrid": "false",
-        "showruler": "false",
-        "allowFileDrop": "false",
-        "path": "/worldmap",
-        "overlist": "DR,CO,RA,DN,BU,AC,TL,HM",
-        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
-        "mapname": "",
-        "mapurl": "",
-        "mapopt": "",
-        "mapwms": false,
-        "x": 800,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "3d435e31e7df8ba6",
-        "type": "comment",
-        "z": "bd8194806705e301",
-        "name": "Analyse des donnees et affiche sur la map en mode tracking",
-        "info": "",
-        "x": 480,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "5bc73122eb101bac",
-        "type": "link in",
-        "z": "bd8194806705e301",
-        "name": "Lien sortie sauvegarde valeur du GPS analyse",
+        "id": "5c6452bb6d6e4700",
+        "type": "link out",
+        "z": "2ba9e38eee59fb38",
+        "name": "Lien vers la sauvegarde etat connexion",
+        "mode": "link",
         "links": [
-            "2c0ac6b0aca863ef"
+            "a0983e787ae78c20"
         ],
-        "x": 325,
-        "y": 260,
-        "wires": [
-            [
-                "237e78b6ced70a46",
-                "9826209b6b3d346b",
-                "2bf8883bd0a7e685"
-            ]
-        ]
+        "x": 485,
+        "y": 320,
+        "wires": []
     },
     {
-        "id": "2bf8883bd0a7e685",
+        "id": "013eec20fef11438",
         "type": "debug",
-        "z": "bd8194806705e301",
-        "name": "debug 10",
+        "z": "2ba9e38eee59fb38",
+        "name": "debug 15",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 400,
+        "x": 480,
+        "y": 440,
         "wires": []
+    },
+    {
+        "id": "487d00c119f4238f",
+        "type": "function",
+        "z": "2ba9e38eee59fb38",
+        "name": "function 3",
+        "func": "let ma_valeur = global.get(\"latitude\");\nmsg.payload = ma_valeur;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "013eec20fef11438"
+            ]
+        ]
+    },
+    {
+        "id": "963f87205a0dbb86",
+        "type": "switch",
+        "z": "2ba9e38eee59fb38",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 630,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f59a61d7a8f9c40a",
+        "type": "change",
+        "z": "2ba9e38eee59fb38",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 280,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "ae53553a08498b18",
@@ -527,8 +568,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
-        "y": 260,
+        "x": 700,
+        "y": 320,
         "wires": []
     },
     {
@@ -631,33 +672,126 @@
         "id": "a0983e787ae78c20",
         "type": "link in",
         "z": "dbcc2d7c85046e7c",
-        "name": "link in 2",
+        "name": "Lien sortie sauvegarde valeur de connectivite",
         "links": [
-            "2c0ac6b0aca863ef"
+            "5c6452bb6d6e4700"
         ],
-        "x": 215,
-        "y": 520,
+        "x": 95,
+        "y": 500,
         "wires": [
             [
-                "37999ef150c79294"
+                "ea5373549342b8ac"
             ]
         ]
     },
     {
-        "id": "37999ef150c79294",
-        "type": "debug",
+        "id": "ea5373549342b8ac",
+        "type": "postgresql",
         "z": "dbcc2d7c85046e7c",
-        "name": "link in 2",
+        "name": " sauvegarde de l'etat de connectivite",
+        "query": "INSERT INTO public.\"trackItApp_connect\" VALUES (DEFAULT, $1, $2);",
+        "postgreSQLConfig": "63c1138ed0bc8265",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 300,
+        "y": 500,
+        "wires": [
+            [
+                "ac7ca9bd648046cb"
+            ]
+        ]
+    },
+    {
+        "id": "237e78b6ced70a46",
+        "type": "worldmap-tracks",
+        "z": "bd8194806705e301",
+        "name": "",
+        "depth": 20,
+        "layer": "separate",
+        "smooth": false,
+        "x": 570,
+        "y": 200,
+        "wires": [
+            [
+                "9826209b6b3d346b"
+            ]
+        ]
+    },
+    {
+        "id": "9826209b6b3d346b",
+        "type": "worldmap",
+        "z": "bd8194806705e301",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "14",
+        "layer": "OSMC",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,AC,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 800,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "3d435e31e7df8ba6",
+        "type": "comment",
+        "z": "bd8194806705e301",
+        "name": "Analyse des donnees et affiche sur la map en mode tracking",
+        "info": "",
+        "x": 480,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "5bc73122eb101bac",
+        "type": "link in",
+        "z": "bd8194806705e301",
+        "name": "Lien sortie sauvegarde valeur du GPS analyse",
+        "links": [
+            "2c0ac6b0aca863ef"
+        ],
+        "x": 325,
+        "y": 260,
+        "wires": [
+            [
+                "237e78b6ced70a46",
+                "9826209b6b3d346b",
+                "2bf8883bd0a7e685"
+            ]
+        ]
+    },
+    {
+        "id": "2bf8883bd0a7e685",
+        "type": "debug",
+        "z": "bd8194806705e301",
+        "name": "debug 10",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 500,
-        "y": 520,
+        "x": 540,
+        "y": 400,
         "wires": []
     },
     {
@@ -778,5 +912,143 @@
         "x": 170,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "6fa54538a7cacbe3",
+        "type": "inject",
+        "z": "c1c74aa1848cc6c6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "74dbca57ae28c108"
+            ]
+        ]
+    },
+    {
+        "id": "1d5d22bf8ebac762",
+        "type": "debug",
+        "z": "c1c74aa1848cc6c6",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "74dbca57ae28c108",
+        "type": "change",
+        "z": "c1c74aa1848cc6c6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mavaleur",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "1d5d22bf8ebac762"
+            ]
+        ]
+    },
+    {
+        "id": "53b98e6e5bc78c4f",
+        "type": "inject",
+        "z": "f52fbd15b6b1b4b4",
+        "name": "get ma valeur",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "29255f446b8324fd"
+            ]
+        ]
+    },
+    {
+        "id": "668986977eb24e3a",
+        "type": "debug",
+        "z": "f52fbd15b6b1b4b4",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "29255f446b8324fd",
+        "type": "function",
+        "z": "f52fbd15b6b1b4b4",
+        "name": "function 4",
+        "func": "let tp = global.get(\"mavaleur\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 300,
+        "wires": [
+            [
+                "668986977eb24e3a"
+            ]
+        ]
     }
 ]
