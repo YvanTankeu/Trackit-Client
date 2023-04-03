@@ -331,7 +331,7 @@
         "type": "function",
         "z": "2ba9e38eee59fb38",
         "name": "Valeur moteur",
-        "func": "let valMoteur = msg.payload.values.Moteur;\n\nlet isMoteurActive = false;\n\nif (valMoteur > 0) {\n    isMoteurActive = true;\n}\n\nmsg.params = [valMoteur];\n\n//msg.params = [valMoteur];\nreturn msg;\n",
+        "func": "//Ce noeud est poutr la suavegarde la val du moteur \n\nlet valMoteur = msg.payload.values.Moteur;\nlet isMoteurActive = false;\n\nif (valMoteur > 0) {\n    isMoteurActive = true;\n}\ncontext.set('etatMoteur', valMoteur); // Stocke la donnée dans le contexte avec une clé \"maDonnee\"\nmsg.params = [valMoteur];\n\n//msg.params = [valMoteur];\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -456,23 +456,6 @@
         "wires": []
     },
     {
-        "id": "013eec20fef11438",
-        "type": "debug",
-        "z": "2ba9e38eee59fb38",
-        "name": "debug 15",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 480,
-        "y": 440,
-        "wires": []
-    },
-    {
         "id": "487d00c119f4238f",
         "type": "function",
         "z": "2ba9e38eee59fb38",
@@ -492,52 +475,21 @@
         ]
     },
     {
-        "id": "963f87205a0dbb86",
-        "type": "switch",
+        "id": "013eec20fef11438",
+        "type": "debug",
         "z": "2ba9e38eee59fb38",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 630,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f59a61d7a8f9c40a",
-        "type": "change",
-        "z": "2ba9e38eee59fb38",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 280,
-        "wires": [
-            []
-        ]
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 440,
+        "wires": []
     },
     {
         "id": "ae53553a08498b18",
@@ -985,6 +937,71 @@
                 "1d5d22bf8ebac762"
             ]
         ]
+    },
+    {
+        "id": "099c044a2413c48b",
+        "type": "function",
+        "z": "c1c74aa1848cc6c6",
+        "name": "function 5",
+        "func": "// initialise the counter to 0 if it doesn't exist already\nvar myCount = context.get('compte') || 0;\nmyCount += 1;\n// store the value back\ncontext.set('compte', myCount);\n// make it part of the outgoing msg object\nmsg.count = myCount;\n/*var moteur = context.get('valMoteur');\nvar value = 10;\n\ncontext.set('valMoteur',value);\nmsg.moteur = value;*/\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "6ca1fcdf56fe6298"
+            ]
+        ]
+    },
+    {
+        "id": "b6e0153675b0594a",
+        "type": "inject",
+        "z": "c1c74aa1848cc6c6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "099c044a2413c48b"
+            ]
+        ]
+    },
+    {
+        "id": "6ca1fcdf56fe6298",
+        "type": "debug",
+        "z": "c1c74aa1848cc6c6",
+        "name": "debug 19",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 400,
+        "wires": []
     },
     {
         "id": "53b98e6e5bc78c4f",
