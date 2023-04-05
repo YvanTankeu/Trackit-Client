@@ -266,6 +266,27 @@
         "className": ""
     },
     {
+        "id": "a72da18a.15c218",
+        "type": "mqtt-broker",
+        "name": "My MQTT Broker",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
         "id": "76b835ae27ecfb91",
         "type": "mqtt in",
         "z": "2ba9e38eee59fb38",
@@ -610,7 +631,8 @@
         "z": "dbcc2d7c85046e7c",
         "name": "Lien sortie sauvegarde valeur de connectivite",
         "links": [
-            "5c6452bb6d6e4700"
+            "5c6452bb6d6e4700",
+            "d5724b58812c01e4"
         ],
         "x": 95,
         "y": 500,
@@ -748,11 +770,16 @@
         "sourceFolder": "src",
         "deployedVersion": "6.3.0",
         "showMsgUib": false,
-        "x": 340,
+        "x": 220,
         "y": 260,
         "wires": [
-            [],
-            []
+            [
+                "c51e2f3a.c126c8",
+                "ccfda87f0874b379"
+            ],
+            [
+                "8d38914dca2a952a"
+            ]
         ]
     },
     {
@@ -764,6 +791,68 @@
         "x": 410,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "8d38914dca2a952a",
+        "type": "link out",
+        "z": "af3e3d78f2bdec1c",
+        "name": "Lien vers la swicth",
+        "mode": "link",
+        "links": [
+            "025e0ee8281b5264"
+        ],
+        "x": 745,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ccfda87f0874b379",
+        "type": "debug",
+        "z": "af3e3d78f2bdec1c",
+        "name": "uibouton",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b39c84af.7b6e1",
+        "type": "mqtt out",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "topic": "test",
+        "qos": "0",
+        "retain": "",
+        "broker": "a72da18a.15c218",
+        "x": 820,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "c51e2f3a.c126c8",
+        "type": "function",
+        "z": "af3e3d78f2bdec1c",
+        "name": "Send Button Value to MQTT",
+        "func": "if (msg.payload.buttonValue === \"on\") {\n    msg.payload = \"1\";\n} else if (msg.payload.buttonValue === \"off\") {\n    msg.payload = \"0\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 440,
+        "y": 460,
+        "wires": [
+            [
+                "b39c84af.7b6e1",
+                "8d38914dca2a952a"
+            ]
+        ]
     },
     {
         "id": "c5cc864cb7041d80",
@@ -866,5 +955,53 @@
         "x": 190,
         "y": 360,
         "wires": []
+    },
+    {
+        "id": "9b30e751bbc78aee",
+        "type": "ui_switch",
+        "z": "82bd2cd878b416b1",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "d1c2adefa9ee1b25",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 310,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "025e0ee8281b5264",
+        "type": "link in",
+        "z": "82bd2cd878b416b1",
+        "name": "Lien sortie uibuilder swicth",
+        "links": [
+            "8d38914dca2a952a"
+        ],
+        "x": 185,
+        "y": 460,
+        "wires": [
+            [
+                "9b30e751bbc78aee"
+            ]
+        ]
     }
 ]
