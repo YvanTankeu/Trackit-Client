@@ -40,22 +40,6 @@
         "env": []
     },
     {
-        "id": "c1c74aa1848cc6c6",
-        "type": "tab",
-        "label": "Flow 4",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "f52fbd15b6b1b4b4",
-        "type": "tab",
-        "label": "Flow 5",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "2937d5c524212b8d",
         "type": "mqtt-broker",
         "name": "",
@@ -299,11 +283,11 @@
         "wires": [
             [
                 "50d0b31813d207bd",
-                "7e7f84375dcf0ad9",
                 "67ed80a24073a177",
                 "b83cecab80c37de1",
                 "459c789425a86b3f",
-                "487d00c119f4238f"
+                "487d00c119f4238f",
+                "7e7f84375dcf0ad9"
             ]
         ]
     },
@@ -312,7 +296,7 @@
         "type": "function",
         "z": "2ba9e38eee59fb38",
         "name": "Valeur GPS",
-        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\n\nreturn {\n    payload: {\n        name: \"Bus\",\n        lat: lat,\n        lon: long,\n        vitesse: parseFloat(vit).toFixed(2) + \" kmph\",\n        icon: 'car'\n    },\n    params: [lat, long, vit]\n};\n",
+        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\nlet acc = msg.payload.values.Acceleration;\n\n\n// Stocker les valeurs de latitude et longitude dans le context\nflow.set(\"latitude\", lat);\nflow.set(\"longitude\", long);\nflow.set(\"vitesse\", vit);\nflow.set(\"acceleration\", acc);\n\n\nreturn {\n    payload: {\n        name: \"Bus\",\n        lat: lat,\n        lon: long,\n        vitesse: parseFloat(vit).toFixed(2) + \" kmph\",\n        icon: 'car'\n    },\n    params: [lat, long, vit]\n};\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -379,7 +363,7 @@
         "type": "function",
         "z": "2ba9e38eee59fb38",
         "name": "Valeur choc",
-        "func": "let valChoc = msg.payload.values.Choc;\nmsg.params = [valChoc];\n\nreturn msg;\n",
+        "func": "let valChoc = msg.payload.values.Choc;\n\nif (valChoc != 0) {\n    let lat = flow.get(\"latitude\");\n    let long = flow.get(\"longitude\");\n    let vit = flow.get(\"vitesse\");\n    let acc = flow.get(\"acceleration\");\n    let forceImpact = Math.floor(Math.random() * 11);\n    msg.params = [lat, long, vit, acc, forceImpact];\n    return msg;\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -428,7 +412,7 @@
         "type": "function",
         "z": "2ba9e38eee59fb38",
         "name": "Valeur connexion",
-        "func": "let etatWifi = msg.payload.values.WiFi;\nlet etatBroker = msg.payload.values.Broker;\n\nmsg.params = [etatWifi, etatBroker];\n\nreturn msg;\n",
+        "func": "let etatWifi = msg.payload.values.WiFi;\nlet etatBroker = msg.payload.values.Broker;\n\nmsg.params = [etatBroker, etatWifi,];\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -516,8 +500,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 700,
@@ -563,7 +547,7 @@
         "type": "postgresql",
         "z": "dbcc2d7c85046e7c",
         "name": "sauvegarde valeur du GPS",
-        "query": "INSERT INTO public.\"trackItApp_capteurgps\"  VALUES (DEFAULT, $1, $2, $3);",
+        "query": "INSERT INTO public.\"trackItApp_capteurgps\"  VALUES (DEFAULT, $1, $2, $3, CURRENT_TIMESTAMP);",
         "postgreSQLConfig": "63c1138ed0bc8265",
         "split": false,
         "rowsPerMsg": 1,
@@ -597,7 +581,7 @@
         "type": "postgresql",
         "z": "dbcc2d7c85046e7c",
         "name": " sauvegarde valeur du Capteur de choc",
-        "query": "INSERT INTO public.\"trackItApp_capteurdechoc\" VALUES (DEFAULT, 1, $1);",
+        "query": "INSERT INTO \"trackItApp_evenementcollision\" (collision_id, date, latitude, longitude, vitesse, acceleration, force_impact) VALUES (DEFAULT, CURRENT_TIMESTAMP, $1, $2, $3, $4, $5);\n",
         "postgreSQLConfig": "63c1138ed0bc8265",
         "split": false,
         "rowsPerMsg": 1,
@@ -866,206 +850,21 @@
         "wires": []
     },
     {
-        "id": "6fa54538a7cacbe3",
-        "type": "inject",
-        "z": "c1c74aa1848cc6c6",
+        "id": "a37534ef61750ade",
+        "type": "mqtt out",
+        "z": "82bd2cd878b416b1",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 240,
-        "y": 240,
-        "wires": [
-            [
-                "74dbca57ae28c108"
-            ]
-        ]
-    },
-    {
-        "id": "1d5d22bf8ebac762",
-        "type": "debug",
-        "z": "c1c74aa1848cc6c6",
-        "name": "debug 14",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "74dbca57ae28c108",
-        "type": "change",
-        "z": "c1c74aa1848cc6c6",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "mavaleur",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 410,
-        "y": 140,
-        "wires": [
-            [
-                "1d5d22bf8ebac762"
-            ]
-        ]
-    },
-    {
-        "id": "099c044a2413c48b",
-        "type": "function",
-        "z": "c1c74aa1848cc6c6",
-        "name": "function 5",
-        "func": "// initialise the counter to 0 if it doesn't exist already\nvar myCount = context.get('compte') || 0;\nmyCount += 1;\n// store the value back\ncontext.set('compte', myCount);\n// make it part of the outgoing msg object\nmsg.count = myCount;\n/*var moteur = context.get('valMoteur');\nvar value = 10;\n\ncontext.set('valMoteur',value);\nmsg.moteur = value;*/\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 400,
-        "y": 400,
-        "wires": [
-            [
-                "6ca1fcdf56fe6298"
-            ]
-        ]
-    },
-    {
-        "id": "b6e0153675b0594a",
-        "type": "inject",
-        "z": "c1c74aa1848cc6c6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 240,
-        "y": 400,
-        "wires": [
-            [
-                "099c044a2413c48b"
-            ]
-        ]
-    },
-    {
-        "id": "6ca1fcdf56fe6298",
-        "type": "debug",
-        "z": "c1c74aa1848cc6c6",
-        "name": "debug 19",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "53b98e6e5bc78c4f",
-        "type": "inject",
-        "z": "f52fbd15b6b1b4b4",
-        "name": "get ma valeur",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
+        "topic": "trackIt/data",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f6dcf7cfb2b35a64",
         "x": 190,
-        "y": 440,
-        "wires": [
-            [
-                "29255f446b8324fd"
-            ]
-        ]
-    },
-    {
-        "id": "668986977eb24e3a",
-        "type": "debug",
-        "z": "f52fbd15b6b1b4b4",
-        "name": "debug 18",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
-        "y": 440,
+        "y": 360,
         "wires": []
-    },
-    {
-        "id": "29255f446b8324fd",
-        "type": "function",
-        "z": "f52fbd15b6b1b4b4",
-        "name": "function 4",
-        "func": "let tp = global.get(\"mavaleur\");\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 260,
-        "y": 300,
-        "wires": [
-            [
-                "668986977eb24e3a"
-            ]
-        ]
     }
 ]
