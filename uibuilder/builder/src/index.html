@@ -15,18 +15,29 @@
 
     <!-- Raphael must be included before justgage -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
-     <!-- Raphael must be included before justgage -->
-    <script type="text/javascript" src="js/jauge.js"></script>
+
+    <!--Librairie d'uibuilder pour du front-end au back-end et inverse-->
+    <script type="text/javascript"
+        src="https://github.com/TotallyInformation/node-red-contrib-uibuilder/blob/a860ef5cef2db8caca7e569fc5195697dc2458ec/front-end/uibuilderfe.js">
+    </script>
+    <script type="text/javascript" src="uibuilderfe.js"></script>
+
+    <!--Pour corriger cetter erreur "cette erreur uibuilderfe.js:418 Uncaught ReferenceError: io is not defined
+    at ioSetup (uibuilderfe.js:418:13)
+    at Object.start (uibuilderfe.js:1624:22)
+    at (index):18:19"jai du importer socket--->
+    <script src="/uibuilder/vendor/socket.io/socket.io.js"></script>
+
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
         <img src="img/logo1.png" alt="Logo" width="100">
         <a class="navbar-brand" href="#"><strong>Track-It</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -57,18 +68,83 @@
                 <div class="card h-100">
                     <div class="card-body text-center">
                         <h5 class="card-title">Control</h5>
-                        <!--<iframe src="http://192.168.2.32:1880/ui/#!/1" height="350" width="340"
-                            style="border: none;"></iframe>-->
-                    <iframe src="http://192.168.1.202:1880/ui/#!/1" height="350" width="340" style="border: none;"></iframe>
+                        <iframe id="control-frame" src=" http://192.168.2.32:1880/ui/#!/0" height="360" width="345"
+                            style="border: none;"></iframe>
+                        <!--<iframe src="http://192.168.1.202:1880/ui/#!/1" height="350" width="340" style="border: none;"></iframe>-->
                     </div>
-                    <button type="button" class="btn btn-dark"><i class="fas fa-play"></i> Start Motor</button>
-                    <button type="button" class="btn btn-danger"><i class="fas fa-stop"></i> Stop Motor</button>
+                    <div id="motor-buttons" class="btn-group btn-group-horizontal">
+                        <button type="button" class="btn btn-dark" id="start-motor">
+                            <i class="fas fa-play"></i> Start Motor
+                        </button>
+                        <button type="button" class="btn btn-danger" id="stop-motor">
+                            <i class="fas fa-stop"></i> Stop Motor
+                        </button>
+                    </div>
                     <hr>
                 </div>
             </div>
         </div>
     </div>
-    <script src="js/speedometre.js"></script>
+    <script>
+        var startButton = document.getElementById("start-motor");
+        var stopButton = document.getElementById("stop-motor");
+        /*
+            uibuilderfe.js:917 Uncaught TypeError: Cannot read properties of undefined (reading 'id')
+            at send (uibuilderfe.js:917:47)
+            at Object.send (uibuilderfe.js:1531:22)
+            at HTMLButtonElement.<anonymous> ((index):19:23)
+            send	@	uibuilderfe.js:917
+            send	@	uibuilderfe.js:1531
+            (anonymous)	@	(index):19
+
+            uilise juste 
+             uibuilder.start();
+        */
+        /*uibuilder.start();
+
+        startButton.addEventListener("click", function () {
+            // code pour démarrer le moteur
+            uibuilder.send({
+                "payload": "on",
+            });
+        });
+
+        stopButton.addEventListener("click", function () {
+            // code pour arrêter le moteur 
+            uibuilder.send({
+                "payload": "on",
+            });
+        });*/
+        /*var motorButtons = document.getElementById("motor-buttons");
+
+        motorButtons.addEventListener("click", function (event) {
+            var target = event.target;
+
+            if (target.id === "start-motor") {
+                uibuilder.send({ "payload": "on" });
+            } else if (target.id === "stop-motor") {
+                uibuilder.send({ "payload": "off" });
+            }
+        });*/
+        uibuilder.start();
+        var startButton = document.getElementById("start-motor");
+        var stopButton = document.getElementById("stop-motor");
+
+        startButton.addEventListener("click", function () {
+            // code pour démarrer le moteur
+            uibuilder.send({
+                "moteur": "start"
+            });
+        });
+
+        stopButton.addEventListener("click", function () {
+            // code pour arrêter le moteur 
+            uibuilder.send({
+                "moteur": "stop"
+            });
+        });
+
+    </script>
 </body>
 
 </html>

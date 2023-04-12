@@ -3,7 +3,8 @@
     "description": "A Node-RED Project",
     "version": "0.0.1",
     "dependencies": {
-        "node-red-contrib-postgresql": "0.12.0"
+        "node-red-contrib-postgresql": "0.12.0",
+        "node-red-contrib-mqttssl": "0.0.5"
     },
     "node-red": {
         "settings": {
