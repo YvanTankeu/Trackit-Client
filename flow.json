@@ -359,7 +359,7 @@
         "type": "function",
         "z": "2ba9e38eee59fb38",
         "name": "Valeur GPS",
-        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\nlet acc = msg.payload.values.Acceleration;\n\n// Stocker les valeurs de latitude et longitude dans le context\nflow.set(\"latitude\", lat);\nflow.set(\"longitude\", long);\nflow.set(\"vitesse\", vit);\nflow.set(\"acceleration\", acc);\n\nreturn {\n    payload: {\n        name: \"Bus\",\n        lat: lat,\n        lon: long,\n        vitesse: parseFloat(vit).toFixed(2) + \" kmph\",\n        icon: 'car'\n    },\n    params: [lat, long, vit]\n};\n",
+        "func": "let ts = msg.payload.ts;\nlet lat = msg.payload.values.Latitude;\nlet long = msg.payload.values.Longitude;\nlet vit = msg.payload.values.Vitesse;\nlet acc = msg.payload.values.Acceleration;\n\n// Stocker les valeurs de latitude et longitude dans le context\nflow.set(\"latitude\", lat);\nflow.set(\"longitude\", long);\nflow.set(\"vitesse\", vit);\nflow.set(\"acceleration\", acc);\n\nreturn {\n    payload: {\n        name: \"Bus\",\n        conducteur: \"John Doe\",\n        lat: lat,\n        lon: long,\n        vitesse: parseFloat(vit).toFixed(2) + \" kmph\",\n        passager: 40 + \"/60\",\n        icon: 'car'\n    },\n    params: [lat, long, vit]\n};\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -563,20 +563,28 @@
         "wires": []
     },
     {
-        "id": "a13f33b1ad93c5aa",
-        "type": "mqtt in",
+        "id": "a4de10dcad59a8f3",
+        "type": "inject",
         "z": "2ba9e38eee59fb38",
         "name": "",
-        "topic": "TrackIt/dat",
-        "qos": "0",
-        "datatype": "auto-detect",
-        "broker": "ae6441637e29964b",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
         "x": 100,
-        "y": 180,
+        "y": 260,
         "wires": [
             []
         ]
