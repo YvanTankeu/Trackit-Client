@@ -40,14 +40,23 @@
         "env": []
     },
     {
+        "id": "f609dee92c26758f",
+        "type": "tab",
+        "label": "MQTTS",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2937d5c524212b8d",
         "type": "mqtt-broker",
         "name": "",
         "broker": "192.168.2.32",
-        "port": "1883",
+        "port": "8883",
+        "tls": "7b12cac76e965c5f",
         "clientid": "",
         "autoConnect": true,
-        "usetls": false,
+        "usetls": true,
         "protocolVersion": "4",
         "keepalive": "60",
         "cleansession": true,
@@ -341,8 +350,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 90,
-        "y": 360,
+        "x": 250,
+        "y": 420,
         "wires": [
             [
                 "50d0b31813d207bd",
@@ -365,8 +374,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
-        "y": 160,
+        "x": 490,
+        "y": 220,
         "wires": [
             [
                 "2c0ac6b0aca863ef"
@@ -384,13 +393,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
-        "y": 80,
+        "x": 490,
+        "y": 140,
         "wires": [
             [
                 "6fa3bb6013653280",
-                "86297121ef89fe41",
-                "da7d03e017b334b3"
+                "86297121ef89fe41"
             ]
         ]
     },
@@ -404,10 +412,11 @@
             "96285613aaa558f6",
             "5bc73122eb101bac",
             "ae53553a08498b18",
-            "38a2857e50814ec0"
+            "38a2857e50814ec0",
+            "2ebee428fe150480"
         ],
-        "x": 495,
-        "y": 160,
+        "x": 655,
+        "y": 220,
         "wires": []
     },
     {
@@ -420,8 +429,8 @@
             "52db2040a36c8cad",
             "f08c8eea2af2189f"
         ],
-        "x": 485,
-        "y": 80,
+        "x": 645,
+        "y": 140,
         "wires": []
     },
     {
@@ -435,8 +444,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
-        "y": 240,
+        "x": 490,
+        "y": 300,
         "wires": [
             [
                 "eb8ebe64d0a3eec5"
@@ -453,8 +462,8 @@
             "088853a0b3fd3a78",
             "282b08adf2f594cf"
         ],
-        "x": 485,
-        "y": 240,
+        "x": 645,
+        "y": 300,
         "wires": []
     },
     {
@@ -468,8 +477,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 350,
-        "y": 320,
+        "x": 510,
+        "y": 380,
         "wires": [
             [
                 "5c6452bb6d6e4700"
@@ -485,8 +494,8 @@
         "links": [
             "a0983e787ae78c20"
         ],
-        "x": 485,
-        "y": 320,
+        "x": 645,
+        "y": 380,
         "wires": []
     },
     {
@@ -500,8 +509,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 400,
+        "x": 480,
+        "y": 460,
         "wires": [
             []
         ]
@@ -516,24 +525,8 @@
             "f08c8eea2af2189f",
             "95d4df0ce7fa9b73"
         ],
-        "x": 485,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "da7d03e017b334b3",
-        "type": "debug",
-        "z": "2ba9e38eee59fb38",
-        "name": "debug 20",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 80,
+        "x": 645,
+        "y": 100,
         "wires": []
     },
     {
@@ -548,8 +541,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 258.1999969482422,
-        "y": 485.1999816894531,
+        "x": 418.1999969482422,
+        "y": 545.1999816894531,
         "wires": []
     },
     {
@@ -558,36 +551,9 @@
         "z": "2ba9e38eee59fb38",
         "name": "RECEPTIONS DE DATA",
         "info": "RECUPERATION DES DONNEES DE NOTRE ARDUINO QU'ON VA PARMETRER\nAFIN DE LES STOCKER DANS LA BASE DE DONNEEES",
-        "x": 290,
-        "y": 40,
+        "x": 450,
+        "y": 100,
         "wires": []
-    },
-    {
-        "id": "a4de10dcad59a8f3",
-        "type": "inject",
-        "z": "2ba9e38eee59fb38",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 100,
-        "y": 260,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "ae53553a08498b18",
@@ -597,7 +563,7 @@
         "links": [
             "2c0ac6b0aca863ef"
         ],
-        "x": 95,
+        "x": 235,
         "y": 320,
         "wires": [
             [
@@ -618,7 +584,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
+        "x": 840,
         "y": 320,
         "wires": []
     },
@@ -631,7 +597,7 @@
             "6fa3bb6013653280",
             "86297121ef89fe41"
         ],
-        "x": 95,
+        "x": 235,
         "y": 220,
         "wires": [
             [
@@ -649,7 +615,7 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 310,
+        "x": 450,
         "y": 160,
         "wires": [
             [
@@ -667,7 +633,7 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 290,
+        "x": 430,
         "y": 260,
         "wires": [
             [
@@ -683,7 +649,7 @@
         "links": [
             "eb8ebe64d0a3eec5"
         ],
-        "x": 95,
+        "x": 235,
         "y": 400,
         "wires": [
             [
@@ -701,7 +667,7 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 320,
+        "x": 460,
         "y": 400,
         "wires": [
             [
@@ -713,9 +679,9 @@
         "id": "8fed4e702d8f3816",
         "type": "comment",
         "z": "dbcc2d7c85046e7c",
-        "name": "Suavegarde des données entrant dans la bd postgresql",
+        "name": "Sauvegarde de données entrant dans la bd postgresql",
         "info": "",
-        "x": 280,
+        "x": 420,
         "y": 100,
         "wires": []
     },
@@ -728,7 +694,7 @@
             "5c6452bb6d6e4700",
             "d5724b58812c01e4"
         ],
-        "x": 95,
+        "x": 235,
         "y": 500,
         "wires": [
             [
@@ -746,61 +712,13 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 300,
+        "x": 440,
         "y": 500,
         "wires": [
             [
                 "ac7ca9bd648046cb"
             ]
         ]
-    },
-    {
-        "id": "237e78b6ced70a46",
-        "type": "worldmap-tracks",
-        "z": "bd8194806705e301",
-        "name": "",
-        "depth": 20,
-        "layer": "separate",
-        "smooth": false,
-        "x": 570,
-        "y": 200,
-        "wires": [
-            [
-                "9826209b6b3d346b"
-            ]
-        ]
-    },
-    {
-        "id": "9826209b6b3d346b",
-        "type": "worldmap",
-        "z": "bd8194806705e301",
-        "name": "",
-        "lat": "",
-        "lon": "",
-        "zoom": "14",
-        "layer": "OSMC",
-        "cluster": "",
-        "maxage": "",
-        "usermenu": "show",
-        "layers": "show",
-        "panit": "false",
-        "panlock": "false",
-        "zoomlock": "false",
-        "hiderightclick": "false",
-        "coords": "none",
-        "showgrid": "false",
-        "showruler": "false",
-        "allowFileDrop": "false",
-        "path": "/worldmap",
-        "overlist": "DR,CO,RA,DN,BU,AC,TL,HM",
-        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
-        "mapname": "",
-        "mapurl": "",
-        "mapopt": "",
-        "mapwms": false,
-        "x": 800,
-        "y": 260,
-        "wires": []
     },
     {
         "id": "3d435e31e7df8ba6",
@@ -824,26 +742,57 @@
         "y": 260,
         "wires": [
             [
-                "237e78b6ced70a46",
-                "9826209b6b3d346b",
-                "2bf8883bd0a7e685"
+                "fdfa568d43f7d4a9",
+                "f8056b69a864b738"
             ]
         ]
     },
     {
-        "id": "2bf8883bd0a7e685",
-        "type": "debug",
+        "id": "fdfa568d43f7d4a9",
+        "type": "worldmap-tracks",
         "z": "bd8194806705e301",
-        "name": "debug 10",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 540,
-        "y": 400,
+        "name": "",
+        "depth": 20,
+        "layer": "combined",
+        "smooth": false,
+        "x": 510,
+        "y": 200,
+        "wires": [
+            [
+                "f8056b69a864b738"
+            ]
+        ]
+    },
+    {
+        "id": "f8056b69a864b738",
+        "type": "worldmap",
+        "z": "bd8194806705e301",
+        "name": "",
+        "lat": "47.649002",
+        "lon": "-65.70211",
+        "zoom": "12",
+        "layer": "OSMC",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,RW,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 700,
+        "y": 260,
         "wires": []
     },
     {
@@ -864,8 +813,8 @@
         "sourceFolder": "src",
         "deployedVersion": "6.3.0",
         "showMsgUib": false,
-        "x": 160,
-        "y": 260,
+        "x": 280,
+        "y": 240,
         "wires": [
             [
                 "c51e2f3a.c126c8",
@@ -880,8 +829,8 @@
         "z": "af3e3d78f2bdec1c",
         "name": "Site web developpe par uiBuilder",
         "info": "",
-        "x": 190,
-        "y": 180,
+        "x": 310,
+        "y": 160,
         "wires": []
     },
     {
@@ -893,8 +842,8 @@
         "links": [
             "025e0ee8281b5264"
         ],
-        "x": 745,
-        "y": 260,
+        "x": 865,
+        "y": 240,
         "wires": []
     },
     {
@@ -910,8 +859,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 440,
-        "y": 200,
+        "x": 560,
+        "y": 180,
         "wires": []
     },
     {
@@ -925,8 +874,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 260,
+        "x": 560,
+        "y": 240,
         "wires": [
             [
                 "8d38914dca2a952a",
@@ -946,8 +895,83 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 300,
+        "x": 840,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "93fd5393357159e0",
+        "type": "comment",
+        "z": "af3e3d78f2bdec1c",
+        "name": "Analyse des donnees et affiche sur la map en mode tracking",
+        "info": "",
+        "x": 380,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2ebee428fe150480",
+        "type": "link in",
+        "z": "af3e3d78f2bdec1c",
+        "name": "Lien sortie sauvegarde valeur du GPS analyse",
+        "links": [
+            "2c0ac6b0aca863ef"
+        ],
+        "x": 225,
+        "y": 460,
+        "wires": [
+            [
+                "1eb4da2690c97d45",
+                "b1648ddb6dc88455"
+            ]
+        ]
+    },
+    {
+        "id": "1eb4da2690c97d45",
+        "type": "worldmap-tracks",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "depth": 20,
+        "layer": "combined",
+        "smooth": false,
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "b1648ddb6dc88455"
+            ]
+        ]
+    },
+    {
+        "id": "b1648ddb6dc88455",
+        "type": "worldmap",
+        "z": "af3e3d78f2bdec1c",
+        "name": "",
+        "lat": "47.649002",
+        "lon": "-65.70211",
+        "zoom": "12",
+        "layer": "OSMC",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,BU,RW,TL,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 600,
+        "y": 460,
         "wires": []
     },
     {
@@ -982,8 +1006,8 @@
         "shape": "circle",
         "showGlow": true,
         "name": "",
-        "x": 170,
-        "y": 160,
+        "x": 310,
+        "y": 180,
         "wires": []
     },
     {
@@ -1010,8 +1034,8 @@
         "seg2": "99",
         "diff": false,
         "className": "",
-        "x": 440,
-        "y": 280,
+        "x": 580,
+        "y": 300,
         "wires": []
     },
     {
@@ -1020,8 +1044,8 @@
         "z": "82bd2cd878b416b1",
         "name": "Gauge de vitesse du bus",
         "info": "",
-        "x": 450,
-        "y": 220,
+        "x": 590,
+        "y": 240,
         "wires": []
     },
     {
@@ -1030,26 +1054,8 @@
         "z": "82bd2cd878b416b1",
         "name": "Etat des leds du bus",
         "info": "",
-        "x": 170,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "a37534ef61750ade",
-        "type": "mqtt out",
-        "z": "82bd2cd878b416b1",
-        "name": "",
-        "topic": "trackIt/data",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "f6dcf7cfb2b35a64",
-        "x": 190,
-        "y": 360,
+        "x": 310,
+        "y": 140,
         "wires": []
     },
     {
@@ -1057,7 +1063,7 @@
         "type": "ui_switch",
         "z": "82bd2cd878b416b1",
         "name": "",
-        "label": "myButton",
+        "label": "Moteur",
         "tooltip": "",
         "group": "7c45152704667ffe",
         "order": 3,
@@ -1078,8 +1084,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 440,
-        "y": 440,
+        "x": 580,
+        "y": 460,
         "wires": [
             [
                 "b39c84af.7b6e1"
@@ -1094,8 +1100,8 @@
         "links": [
             "8d38914dca2a952a"
         ],
-        "x": 95,
-        "y": 440,
+        "x": 235,
+        "y": 460,
         "wires": [
             [
                 "9b30e751bbc78aee"
@@ -1116,8 +1122,8 @@
         "correl": "",
         "expiry": "",
         "broker": "f6dcf7cfb2b35a64",
-        "x": 670,
-        "y": 440,
+        "x": 810,
+        "y": 460,
         "wires": []
     },
     {
@@ -1128,8 +1134,8 @@
         "links": [
             "2c0ac6b0aca863ef"
         ],
-        "x": 105,
-        "y": 280,
+        "x": 245,
+        "y": 300,
         "wires": [
             [
                 "0f197e98178b0bfe"
@@ -1147,8 +1153,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 280,
+        "x": 380,
+        "y": 300,
         "wires": [
             [
                 "0f8a8f61c5843245"
@@ -1161,8 +1167,45 @@
         "z": "82bd2cd878b416b1",
         "name": "Bouton de control de moteur",
         "info": "",
-        "x": 460,
-        "y": 380,
+        "x": 600,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "20f917ebb69315ff",
+        "type": "mqtt in",
+        "z": "f609dee92c26758f",
+        "name": "",
+        "topic": "trackIt/data",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "2937d5c524212b8d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "9e4e55ad4f1f721b"
+            ]
+        ]
+    },
+    {
+        "id": "9e4e55ad4f1f721b",
+        "type": "debug",
+        "z": "f609dee92c26758f",
+        "name": "debug 23",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 200,
         "wires": []
     }
 ]
